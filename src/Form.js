@@ -21,28 +21,28 @@ class Form extends React.Component {
             data-testid="description-input"
           />
         </label>
-        <label htmlFor="atrr1-input">
+        <label htmlFor="attr1-input">
           <input
             type="number"
-            name="atrr1-input"
-            id="atrr1-input"
-            data-testid="atrr1-input"
+            name="attr1-input"
+            id="attr1-input"
+            data-testid="attr1-input"
           />
         </label>
-        <label htmlFor="atrr2-input">
+        <label htmlFor="attr2-input">
           <input
             type="number"
-            name="atrr2-input"
-            id="atrr2-input"
-            data-testid="atrr2-input"
+            name="attr2-input"
+            id="attr2-input"
+            data-testid="attr2-input"
           />
         </label>
-        <label htmlFor="atrr3-input">
+        <label htmlFor="attr3-input">
           <input
             type="number"
-            name="atrr3-input"
-            id="atrr3-input"
-            data-testid="atrr3-input"
+            name="attr3-input"
+            id="attr3-input"
+            data-testid="attr3-input"
           />
         </label>
         <label htmlFor="image-input">
@@ -57,7 +57,7 @@ class Form extends React.Component {
           <select name="rare-input" id="rare-input" data-testid="rare-input">
             <option value="normal">normal</option>
             <option value="raro">raro</option>
-            <option value="muito-raro">muito raro</option>
+            <option value="muito raro">muito raro</option>
           </select>
         </label>
         <label htmlFor="trunfo-input">
