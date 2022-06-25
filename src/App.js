@@ -8,14 +8,14 @@ class App extends React.Component {
     super();
 
     this.state = {
-      nameInput: '',
-      descriptionInput: '',
-      attr1Input: '',
-      attr2Input: '',
-      attr3Input: '',
-      imageInput: '',
-      rareInput: '',
-      trunfoInput: false,
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: '',
       buttonDisable: true,
     };
   }
@@ -29,14 +29,14 @@ class App extends React.Component {
 
   render() {
     const {
-      nameInput,
-      descriptionInput,
-      attr1Input,
-      attr2Input,
-      attr3Input,
-      imageInput,
-      rareInput,
-      trunfoInput,
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
       buttonDisable,
     } = this.state;
 
@@ -45,25 +45,25 @@ class App extends React.Component {
         <h1>Tryunfo</h1>
         <Form
           onInputChange={ this.handleInputChange }
-          cardName={ nameInput }
-          cardDescription={ descriptionInput }
-          cardAttr1={ attr1Input }
-          cardAttr2={ attr2Input }
-          cardAttr3={ attr3Input }
-          cardImage={ imageInput }
-          cardRare={ rareInput }
-          cardTrunfo={ trunfoInput }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
           isSavedButtonDisable={ buttonDisable }
         />
         <Card
-          cardName={ nameInput }
-          cardDescription={ descriptionInput }
-          cardAttr1={ attr1Input }
-          cardAttr2={ attr2Input }
-          cardAttr3={ attr3Input }
-          cardImage={ imageInput }
-          cardRare={ rareInput }
-          cardTrunfo={ trunfoInput }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
         />
       </div>
     );
@@ -71,14 +71,14 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  nameInput: PropTypes.string,
-  descriptionInput: PropTypes.string,
-  attr1Input: PropTypes.string,
-  attr2Input: PropTypes.string,
-  attr3Input: PropTypes.string,
-  imageInput: PropTypes.string,
-  rareInput: PropTypes.string,
-  trunfoInput: PropTypes.bool,
+  cardName: PropTypes.string,
+  cardDescription: PropTypes.string,
+  cardAttr1: PropTypes.string,
+  cardAttr2: PropTypes.string,
+  cardAttr3: PropTypes.string,
+  cardImage: PropTypes.string,
+  cardRare: PropTypes.string,
+  cardTrunfo: PropTypes.bool,
 }.isRequired;
 
 export default App;
