@@ -12,11 +12,12 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+
     return (
       <form>
         <label htmlFor="nameInput">
@@ -46,6 +47,7 @@ class Form extends React.Component {
         <label htmlFor="attr1Input">
           <input
             type="number"
+            max="90"
             name="attr1Input"
             id="attr1Input"
             value={ cardAttr1 }
@@ -57,6 +59,7 @@ class Form extends React.Component {
         <label htmlFor="attr2Input">
           <input
             type="number"
+            max="90"
             name="attr2Input"
             id="attr2Input"
             value={ cardAttr2 }
@@ -68,6 +71,7 @@ class Form extends React.Component {
         <label htmlFor="attr3Input">
           <input
             type="number"
+            max="90"
             name="attr3Input"
             id="attr3Input"
             value={ cardAttr3 }

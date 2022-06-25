@@ -10,12 +10,13 @@ class App extends React.Component {
     this.state = {
       nameInput: '',
       descriptionInput: '',
-      attr1Input: 0,
-      attr2Input: 0,
-      attr3Input: 0,
+      attr1Input: '',
+      attr2Input: '',
+      attr3Input: '',
       imageInput: '',
-      rareInput: 'normal',
+      rareInput: '',
       trunfoInput: false,
+      buttonDisable: true,
     };
   }
 
@@ -36,6 +37,7 @@ class App extends React.Component {
       imageInput,
       rareInput,
       trunfoInput,
+      buttonDisable,
     } = this.state;
 
     return (
@@ -51,6 +53,7 @@ class App extends React.Component {
           cardImage={ imageInput }
           cardRare={ rareInput }
           cardTrunfo={ trunfoInput }
+          isSavedButtonDisable={ buttonDisable }
         />
         <Card
           cardName={ nameInput }
