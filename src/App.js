@@ -16,11 +16,9 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      isSaveButtonDisable: true,
+      isSaveButtonDisabled: true,
     };
   }
-
-  // isSaveButtonDisable = () => true;
 
   handleInputChange = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -35,15 +33,15 @@ class App extends React.Component {
     const validate = Object.values(state).map((item) => item)
       .filter((item) => item.length > 0);
     if (validate.length === expectedLenght) {
-      this.isSaveButtonDisableState(false);
+      this.isSaveButtonDisabledState(false);
       this.validationAttr();
     } else {
-      this.isSaveButtonDisableState(true);
+      this.isSaveButtonDisabledState(true);
     }
   }
 
-  isSaveButtonDisableState = (bool) => {
-    this.setState({ isSaveButtonDisable: bool });
+  isSaveButtonDisabledState = (bool) => {
+    this.setState({ isSaveButtonDisabled: bool });
   }
 
   validationAttr = () => {
@@ -57,39 +55,8 @@ class App extends React.Component {
       (cardAttr2 > maxAttr || cardAttr2 < 0) ? 1 : 0,
       (cardAttr3 > maxAttr || cardAttr3 < 0) ? 1 : 0,
     ];
-    this.isSaveButtonDisableState(validation.includes(1));
+    this.isSaveButtonDisabledState(validation.includes(1));
   }
-
-  // validationInput = () => {
-  //   const { state } = this;
-  //   const expectedLenght = 7;
-  //   const validate = Object.values(state).map((item) => item)
-  //     .filter((item) => item.length > 0);
-  //   if (validate.length === expectedLenght) {
-  //     this.isSavedButtonDisable = () => false;
-  //     this.validationAttr();
-  //   } else {
-  //     this.isSavedButtonDisable = () => true;
-  //   }
-  // }
-
-  // validationAttr = () => {
-  //   const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
-  //   const attrSum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
-  //   const maxTotalAttr = 210;
-  //   const maxAttr = 90;
-  //   if (attrSum > maxTotalAttr) {
-  //     this.isSavedButtonDisable = () => true;
-  //   } else if (maxAttr < cardAttr1) {
-  //     this.isSavedButtonDisable = () => true;
-  //   } else if (maxAttr < cardAttr2) {
-  //     this.isSavedButtonDisable = () => true;
-  //   } else if (maxAttr < cardAttr3) {
-  //     this.isSavedButtonDisable = () => true;
-  //   } else {
-  //     this.isSavedButtonDisable = () => false;
-  //   }
-  // }
 
   render() {
     const {
@@ -101,7 +68,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      isSaveButtonDisable,
+      isSaveButtonDisabled,
     } = this.state;
 
     return (
@@ -117,7 +84,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          isSaveButtonDisable={ isSaveButtonDisable }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <Card
           cardName={ cardName }
