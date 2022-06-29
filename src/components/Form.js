@@ -43,7 +43,7 @@ class Form extends React.Component {
             data-testid="description-input"
           />
         </label>
-        Atributo 1
+        Velocidade
         <label htmlFor="cardAttr1">
           <input
             type="number"
@@ -55,7 +55,7 @@ class Form extends React.Component {
             data-testid="attr1-input"
           />
         </label>
-        Atributo 2
+        Inteligência
         <label htmlFor="cardAttr2">
           <input
             type="number"
@@ -67,7 +67,7 @@ class Form extends React.Component {
             data-testid="attr2-input"
           />
         </label>
-        Atributo 3
+        Resistência
         <label htmlFor="cardAttr3">
           <input
             type="number"

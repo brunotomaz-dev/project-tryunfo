@@ -17,6 +17,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      cards: [],
     };
   }
 
@@ -28,9 +29,10 @@ class App extends React.Component {
   }
 
   validationInput = () => {
-    const { state } = this;
+    // const { state } = this;
+    const { isSaveButtonDisabled, cards, ...rest } = this.state;
     const expectedLenght = 7;
-    const validate = Object.values(state).map((item) => item)
+    const validate = Object.values(rest).map((item) => item)
       .filter((item) => item.length > 0);
     if (validate.length === expectedLenght) {
       this.isSaveButtonDisabledState(false);
@@ -56,6 +58,25 @@ class App extends React.Component {
       (cardAttr3 > maxAttr || cardAttr3 < 0) ? 1 : 0,
     ];
     this.isSaveButtonDisabledState(validation.includes(1));
+  }
+
+  handleButtonSaveClick = (event) => {
+    event.preventDefault();
+    const { isSaveButtonDisabled, cards, ...rest } = this.state;
+    this.setState((previousState) => {
+      const newAddCard = [rest, ...previousState.cards];
+      return { cards: newAddCard };
+    });
+    this.setState({
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+    });
   }
 
   render() {
@@ -85,6 +106,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.handleButtonSaveClick }
         />
         <Card
           cardName={ cardName }
