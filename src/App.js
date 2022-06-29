@@ -18,6 +18,7 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       cards: [],
+      hasTrunfo: false,
     };
   }
 
@@ -29,8 +30,7 @@ class App extends React.Component {
   }
 
   validationInput = () => {
-    // const { state } = this;
-    const { isSaveButtonDisabled, cards, ...rest } = this.state;
+    const { isSaveButtonDisabled, cards, hasTrunfo, ...rest } = this.state;
     const expectedLenght = 7;
     const validate = Object.values(rest).map((item) => item)
       .filter((item) => item.length > 0);
@@ -62,11 +62,11 @@ class App extends React.Component {
 
   handleButtonSaveClick = (event) => {
     event.preventDefault();
-    const { isSaveButtonDisabled, cards, ...rest } = this.state;
+    const { hasTrunfo, isSaveButtonDisabled, cards, ...rest } = this.state;
     this.setState((previousState) => {
       const newAddCard = [rest, ...previousState.cards];
       return { cards: newAddCard };
-    });
+    }, () => this.handleTrunfo());
     this.setState({
       cardAttr1: 0,
       cardAttr2: 0,
@@ -77,6 +77,14 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
     });
+  }
+
+  handleTrunfo = () => { // trabalhar nessa lógica
+    const { cards } = this.state;
+    if (Object.values(cards).includes(true)) {
+      this.setState({ hasTrunfo: true });
+    }
+    this.setState({ hasTrunfo: false });
   }
 
   render() {
