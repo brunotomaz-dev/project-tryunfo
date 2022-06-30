@@ -108,6 +108,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
             data-testid="rare-input"
           >
+            <option value="">{' '}</option>
             <option value="normal">normal</option>
             <option value="raro">raro</option>
             <option value="muito raro">muito raro</option>
@@ -115,6 +116,7 @@ class Form extends React.Component {
         </label>
         <label htmlFor="cardTrunfo">
           Super:
+          {' '}
           { hasTrunfo
             ? <p>&quot;Você já tem um Super Trunfo em seu baralho&quot;</p>
             : inputSuper }

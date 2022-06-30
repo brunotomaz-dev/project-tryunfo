@@ -21,9 +21,10 @@ class Card extends React.Component {
 
     // if (cardName === '') return null;
     return (
-      <section>
+      <section className="card scale">
         <h1 data-testid="name-card">{cardName}</h1>
         <img
+          className="img"
           src={ cardImage }
           alt={ cardName }
           data-testid="image-card"

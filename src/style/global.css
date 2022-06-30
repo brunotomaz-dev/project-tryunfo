@@ -123,6 +123,7 @@ small, .text_small {
 
 /* image */
 .img {
+  border-radius: var(--borderRadius);
   display: block;
   object-fit: cover;
   width: 100%;
@@ -165,6 +166,8 @@ form {
   background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
+  margin-bottom: 8px;
+  max-width: 50%;
   padding: 2rem 2.5rem;
 }
 
@@ -178,6 +181,10 @@ input, textarea, select {
 }
 
 .container {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
   max-width: var(--max-width);
 }
@@ -198,4 +205,28 @@ input, textarea, select {
 .success {
   background: var(--green-light);
   color: var(--green-dark);
+}
+
+.card {
+  align-items: center;
+  background-color: lightgoldenrodyellow;
+  border: 2px var(--shadow-3) solid;
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+  max-width: 300px;
+  padding: 5px;
+}
+
+/* importei */
+img {
+  -webkit-box-reflect: below 5px
+    linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
+  transition: all 0.5s ease;
+}
+
+.scale:hover {
+  transform: scale(1.1);
 }

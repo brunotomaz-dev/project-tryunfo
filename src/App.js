@@ -89,6 +89,33 @@ class App extends React.Component {
     return arrayCardTrunfo.includes(true) ? changeState(true) : changeState(false);
   }
 
+  savedCards = () => {
+    const { cards } = this.state;
+    return cards.map((object) => {
+      const {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+      } = object;
+      return (<Card
+        key={ cardName }
+        cardName={ cardName }
+        cardDescription={ cardDescription }
+        cardAttr1={ cardAttr1 }
+        cardAttr2={ cardAttr2 }
+        cardAttr3={ cardAttr3 }
+        cardImage={ cardImage }
+        cardRare={ cardRare }
+        cardTrunfo={ cardTrunfo }
+      />);
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -130,6 +157,9 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <div className="container">
+          {this.savedCards()}
+        </div>
       </div>
     );
   }
