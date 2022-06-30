@@ -81,10 +81,12 @@ class App extends React.Component {
 
   handleTrunfo = () => { // trabalhar nessa lógica
     const { cards } = this.state;
-    if (Object.values(cards).includes(true)) {
-      this.setState({ hasTrunfo: true });
-    }
-    this.setState({ hasTrunfo: false });
+    const changeState = (state) => this.setState({ hasTrunfo: state });
+    const arrayCardTrunfo = cards.map((object) => {
+      const { cardTrunfo } = object;
+      return cardTrunfo;
+    });
+    return arrayCardTrunfo.includes(true) ? changeState(true) : changeState(false);
   }
 
   render() {
@@ -97,6 +99,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
 
@@ -113,6 +116,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.handleButtonSaveClick }
         />
