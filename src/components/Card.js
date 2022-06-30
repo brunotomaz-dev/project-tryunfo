@@ -19,7 +19,7 @@ class Card extends React.Component {
       cardTrunfo,
     } = this.props;
 
-    if (cardName === '') return null;
+    // if (cardName === '') return null;
     return (
       <section>
         <h1 data-testid="name-card">{cardName}</h1>
