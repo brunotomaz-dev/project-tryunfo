@@ -1,11 +1,33 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 class Card extends React.Component {
   handleTrunfo = (card) => {
     const trunfoCard = <h2 data-testid="trunfo-card">Super Trunfo</h2>;
     return card === true ? trunfoCard : null;
   }
+
+  atrrSection = (cardAttr1, cardAttr2, cardAttr3) => (
+    <div className="attr-container">
+      <p data-testid="attr1-card" className="attr">
+        <strong>Velocidade:</strong>
+        {' '}
+        {cardAttr1}
+      </p>
+      <p data-testid="attr2-card" className="attr">
+        <strong>Inteligência:</strong>
+        {' '}
+        {cardAttr2}
+      </p>
+      <p data-testid="attr3-card" className="attr">
+        <strong>Resistência:</strong>
+        {' '}
+        {cardAttr3}
+      </p>
+    </div>
+  )
+
+  cardColor = (cardRare) => (cardRare === 'normal' ? 'card' : `card ${cardRare}`)
 
   render() {
     const {
@@ -21,19 +43,23 @@ class Card extends React.Component {
 
     // if (cardName === '') return null;
     return (
-      <section className="card scale">
-        <h1 data-testid="name-card">{cardName}</h1>
+      <section className={ `scale ${this.cardColor(cardRare)}` }>
+        <h2 data-testid="name-card">{cardName}</h2>
         <img
           className="img"
           src={ cardImage }
           alt={ cardName }
           data-testid="image-card"
         />
-        <p data-testid="description-card">{cardDescription}</p>
-        <p data-testid="attr1-card">{cardAttr1}</p>
-        <p data-testid="attr2-card">{cardAttr2}</p>
-        <p data-testid="attr3-card">{cardAttr3}</p>
-        <h3 data-testid="rare-card">{cardRare}</h3>
+        <p
+          data-testid="description-card"
+          className="description-card"
+        >
+          {cardDescription}
+        </p>
+        {(cardAttr1 || cardAttr1 > 0)
+        && this.atrrSection(cardAttr1, cardAttr2, cardAttr3)}
+        {cardRare !== 'normal' && <h3 data-testid="rare-card">{cardRare}</h3>}
         <div>{this.handleTrunfo(cardTrunfo)}</div>
       </section>
     );

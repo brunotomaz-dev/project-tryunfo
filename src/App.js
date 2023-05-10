@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
 
@@ -14,7 +14,7 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       cards: [],
@@ -31,10 +31,10 @@ class App extends React.Component {
 
   validationInput = () => {
     const { isSaveButtonDisabled, cards, hasTrunfo, ...rest } = this.state;
-    const expectedLenght = 7;
+    const expectedLength = 7;
     const validate = Object.values(rest).map((item) => item)
       .filter((item) => item.length > 0);
-    if (validate.length === expectedLenght) {
+    if (validate.length === expectedLength) {
       this.isSaveButtonDisabledState(false);
       this.validationAttr();
     } else {
@@ -76,6 +76,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     });
   }
 
@@ -132,32 +133,36 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Tryunfo</h1>
-        <Form
-          onInputChange={ this.handleInputChange }
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ this.handleButtonSaveClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
+        <h1 className="center">Tryunfo</h1>
         <div className="container">
+          <div className="form_container">
+            <Form
+              onInputChange={ this.handleInputChange }
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onSaveButtonClick={ this.handleButtonSaveClick }
+            />
+          </div>
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+          />
+        </div>
+        <div className="container_cards">
           {this.savedCards()}
         </div>
       </div>

@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 class Form extends React.Component {
   render() {
@@ -40,8 +40,8 @@ class Form extends React.Component {
             data-testid="name-input"
           />
         </label>
-        Descrição
         <label htmlFor="cardDescription">
+          Descrição
           <textarea
             name="cardDescription"
             id="cardDescription"
@@ -52,8 +52,8 @@ class Form extends React.Component {
             data-testid="description-input"
           />
         </label>
-        Velocidade
         <label htmlFor="cardAttr1">
+          Velocidade
           <input
             type="number"
             max="90"
@@ -64,8 +64,8 @@ class Form extends React.Component {
             data-testid="attr1-input"
           />
         </label>
-        Inteligência
         <label htmlFor="cardAttr2">
+          Inteligência
           <input
             type="number"
             max="90"
@@ -76,8 +76,8 @@ class Form extends React.Component {
             data-testid="attr2-input"
           />
         </label>
-        Resistência
         <label htmlFor="cardAttr3">
+          Resistência
           <input
             type="number"
             max="90"
@@ -88,8 +88,8 @@ class Form extends React.Component {
             data-testid="attr3-input"
           />
         </label>
-        Imagem
         <label htmlFor="cardImage">
+          Imagem
           <input
             type="text"
             name="cardImage"
@@ -99,8 +99,8 @@ class Form extends React.Component {
             data-testid="image-input"
           />
         </label>
-        Raridade
         <label htmlFor="cardRare">
+          Raridade
           <select
             name="cardRare"
             id="cardRare"
