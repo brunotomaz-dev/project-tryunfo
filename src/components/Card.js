@@ -39,29 +39,41 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      cardStatus,
+      handleExclusion,
     } = this.props;
 
     // if (cardName === '') return null;
     return (
-      <section className={ `scale ${this.cardColor(cardRare)}` }>
-        <h2 data-testid="name-card">{cardName}</h2>
-        <img
-          className="img"
-          src={ cardImage }
-          alt={ cardName }
-          data-testid="image-card"
-        />
-        <p
-          data-testid="description-card"
-          className="description-card"
-        >
-          {cardDescription}
-        </p>
-        {(cardAttr1 || cardAttr1 > 0)
-        && this.atrrSection(cardAttr1, cardAttr2, cardAttr3)}
-        {cardRare !== 'normal' && <h3 data-testid="rare-card">{cardRare}</h3>}
-        <div>{this.handleTrunfo(cardTrunfo)}</div>
-      </section>
+      <div className="container-column">
+        <section className={ cardName && `scale ${this.cardColor(cardRare)}` }>
+          <h2 data-testid="name-card">{cardName}</h2>
+          <img
+            className="img"
+            src={ cardImage }
+            alt={ cardName }
+            data-testid="image-card"
+          />
+          <p
+            data-testid="description-card"
+            className="description-card"
+          >
+            {cardDescription}
+          </p>
+          {(cardAttr1 || cardAttr1 > 0)
+          && this.atrrSection(cardAttr1, cardAttr2, cardAttr3)}
+          {cardRare !== 'normal' && <h3 data-testid="rare-card">{cardRare}</h3>}
+          <div>{this.handleTrunfo(cardTrunfo)}</div>
+        </section>
+        {cardStatus === 'saved' && (
+          <button
+            data-testid="delete-button"
+            onClick={ () => handleExclusion(cardName) }
+            type="button"
+          >
+            Excluir
+          </button>)}
+      </div>
     );
   }
 }

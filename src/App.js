@@ -64,7 +64,7 @@ class App extends React.Component {
     event.preventDefault();
     const { hasTrunfo, isSaveButtonDisabled, cards, ...rest } = this.state;
     this.setState((previousState) => {
-      const newAddCard = [rest, ...previousState.cards];
+      const newAddCard = [...previousState.cards, rest];
       return { cards: newAddCard };
     }, () => this.handleTrunfo());
     this.setState({
@@ -90,6 +90,12 @@ class App extends React.Component {
     return arrayCardTrunfo.includes(true) ? changeState(true) : changeState(false);
   }
 
+  handleSavedCardsExclude = (cardName) => {
+    const { cards } = this.state;
+    const newCards = cards.filter((object) => object.cardName !== cardName);
+    this.setState({ cards: newCards }, () => this.handleTrunfo());
+  }
+
   savedCards = () => {
     const { cards } = this.state;
     return cards.map((object) => {
@@ -113,6 +119,8 @@ class App extends React.Component {
         cardImage={ cardImage }
         cardRare={ cardRare }
         cardTrunfo={ cardTrunfo }
+        cardStatus="saved"
+        handleExclusion={ this.handleSavedCardsExclude }
       />);
     });
   }
@@ -160,6 +168,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            cardStatus="preview"
           />
         </div>
         <div className="container_cards">

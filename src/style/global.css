@@ -191,6 +191,16 @@ button:disabled {
   max-width: var(--max-width);
 }
 
+.container-column {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
 .card {
   align-items: center;
   background-color: lightgoldenrodyellow;
