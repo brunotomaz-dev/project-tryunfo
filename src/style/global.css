@@ -11,7 +11,7 @@
 
   --borderRadius: 0.25rem;
 
-  --max-width: 1120px;
+  --max-width: 95%;
 
   --transition: 0.3s ease-in-out all;
 
@@ -58,7 +58,8 @@
 }
 
 ::selection {
-  background-color: var(--green-light);
+  background-color: var(--accent);
+  color: var(--grey-200);
 }
 
 /* Fonts */
@@ -83,7 +84,8 @@ h1, h2, h3, h4, h5 {
   line-height: 1.3;
   margin: 0;
   margin-bottom: 1.38rem;
-  text-transform: capitalize;
+
+  /* text-transform: capitalize; */
 }
 
 h1 {
@@ -191,6 +193,17 @@ button:disabled {
   max-width: var(--max-width);
 }
 
+.full-width {
+  flex-wrap: nowrap;
+  max-width: 100%;
+}
+
+.special {
+  flex-wrap: nowrap;
+  gap: 60px;
+  max-width: 100%;
+}
+
 .container-column {
   align-content: center;
   align-items: center;
@@ -209,10 +222,10 @@ button:disabled {
   box-shadow: var(--shadow-2);
   display: flex;
   flex-direction: column;
-  height: 600px;
-  justify-content: space-between;
+  height: 400px;
+  justify-content: space-around;
   padding: 5px;
-  width: 400px;
+  width: 300px;
 }
 
 img {
@@ -224,7 +237,7 @@ img {
 .img {
   border-radius: var(--borderRadius);
   display: block;
-  max-height: 200px;
+  max-height: 100px;
   object-fit: cover;
 }
 
@@ -240,6 +253,10 @@ img {
 }
 
 .description-card {
+  align-items: center;
+  display: flex;
+  font-size: small;
+  height: 40%;
   padding: 7px;
   text-align: center;
   white-space: pre-line;
@@ -248,24 +265,47 @@ img {
 .attr-container {
   align-items: center;
   display: flex;
+  font-size: small;
   gap: 10px;
   margin: 0 auto;
   padding: 5px;
+  text-align: center;
+  width: 99%;
 }
 
 .attr {
   color: var(--black);
 }
 
-.raro {
+.rare {
 
   /* stylelint-disable-next-line max-line-length */
   background: radial-gradient(circle, var(--rare) 0%, var(--rare-80) 80%, var(--rare-100) 100%);
   background-color: rgb(130, 197, 252);
-
 }
 
-.muito {
-  background: goldenrod;
+.epic {
   background-color: goldenrod;
+}
+
+.name-card {
+  font-family: cursive;
+  margin-bottom: 5px;
+  text-transform: none;
+}
+
+.trunfo {
+  background-color: var(--accent);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.5rem;
+  height: 45px;
+  margin-bottom: 15px;
+  padding: 0.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.card-rare {
+  margin-bottom: 10px;
 }

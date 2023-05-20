@@ -29,6 +29,7 @@ class Form extends React.Component {
 
     return (
       <form>
+        <h3>Adicionar carta</h3>
         <label htmlFor="cardName">
           Nome
           <input
@@ -52,42 +53,44 @@ class Form extends React.Component {
             data-testid="description-input"
           />
         </label>
-        <label htmlFor="cardAttr1">
-          Velocidade
-          <input
-            type="number"
-            max="90"
-            name="cardAttr1"
-            id="cardAttr1"
-            value={ cardAttr1 }
-            onChange={ onInputChange }
-            data-testid="attr1-input"
-          />
-        </label>
-        <label htmlFor="cardAttr2">
-          Inteligência
-          <input
-            type="number"
-            max="90"
-            name="cardAttr2"
-            id="cardAttr2"
-            value={ cardAttr2 }
-            onChange={ onInputChange }
-            data-testid="attr2-input"
-          />
-        </label>
-        <label htmlFor="cardAttr3">
-          Resistência
-          <input
-            type="number"
-            max="90"
-            name="cardAttr3"
-            id="cardAttr3"
-            value={ cardAttr3 }
-            onChange={ onInputChange }
-            data-testid="attr3-input"
-          />
-        </label>
+        <div className="container full-width">
+          <label htmlFor="cardAttr1">
+            Presença
+            <input
+              type="number"
+              max="90"
+              name="cardAttr1"
+              id="cardAttr1"
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+              data-testid="attr1-input"
+            />
+          </label>
+          <label htmlFor="cardAttr2">
+            Aprendizado
+            <input
+              type="number"
+              max="90"
+              name="cardAttr2"
+              id="cardAttr2"
+              value={ cardAttr2 }
+              onChange={ onInputChange }
+              data-testid="attr2-input"
+            />
+          </label>
+          <label htmlFor="cardAttr3">
+            Popularidade
+            <input
+              type="number"
+              max="90"
+              name="cardAttr3"
+              id="cardAttr3"
+              value={ cardAttr3 }
+              onChange={ onInputChange }
+              data-testid="attr3-input"
+            />
+          </label>
+        </div>
         <label htmlFor="cardImage">
           Imagem
           <input
@@ -99,27 +102,29 @@ class Form extends React.Component {
             data-testid="image-input"
           />
         </label>
-        <label htmlFor="cardRare">
-          Raridade
-          <select
-            name="cardRare"
-            id="cardRare"
-            value={ cardRare }
-            onChange={ onInputChange }
-            data-testid="rare-input"
-          >
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">muito raro</option>
-          </select>
-        </label>
-        <label htmlFor="cardTrunfo">
-          Super:
-          {' '}
-          { hasTrunfo
-            ? <p>&quot;Você já tem um Super Trunfo em seu baralho&quot;</p>
-            : inputSuper }
-        </label>
+        <div className="container special">
+          <label htmlFor="cardRare">
+            Raridade
+            <select
+              name="cardRare"
+              id="cardRare"
+              value={ cardRare }
+              onChange={ onInputChange }
+              data-testid="rare-input"
+            >
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito raro">muito raro</option>
+            </select>
+          </label>
+          <label htmlFor="cardTrunfo">
+            Super:
+            {' '}
+            { hasTrunfo
+              ? <p>&quot;Você já tem um Super Trunfo em seu baralho&quot;</p>
+              : inputSuper }
+          </label>
+        </div>
         <button
           type="submit"
           name="saveButton"

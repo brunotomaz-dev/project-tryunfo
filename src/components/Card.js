@@ -3,31 +3,40 @@ import React from 'react';
 
 class Card extends React.Component {
   handleTrunfo = (card) => {
-    const trunfoCard = <h2 data-testid="trunfo-card">Super Trunfo</h2>;
+    const trunfoCard = <h3 data-testid="trunfo-card" className="trunfo">Super Trunfo</h3>;
     return card === true ? trunfoCard : null;
   }
 
   atrrSection = (cardAttr1, cardAttr2, cardAttr3) => (
     <div className="attr-container">
       <p data-testid="attr1-card" className="attr">
-        <strong>Velocidade:</strong>
+        <strong>Presença:</strong>
         {' '}
         {cardAttr1}
       </p>
       <p data-testid="attr2-card" className="attr">
-        <strong>Inteligência:</strong>
+        <strong>Aprendizado:</strong>
         {' '}
         {cardAttr2}
       </p>
       <p data-testid="attr3-card" className="attr">
-        <strong>Resistência:</strong>
+        <strong>Popularidade:</strong>
         {' '}
         {cardAttr3}
       </p>
     </div>
   )
 
-  cardColor = (cardRare) => (cardRare === 'normal' ? 'card' : `card ${cardRare}`)
+  cardColor = (cardRare) => {
+    let rare = '';
+    if (cardRare === 'raro') {
+      rare = 'rare';
+    }
+    if (cardRare === 'muito raro') {
+      rare = 'epic';
+    }
+    return cardRare === 'normal' ? 'card' : `card ${rare}`;
+  }
 
   render() {
     const {
@@ -47,7 +56,7 @@ class Card extends React.Component {
     return (
       <div className="container-column">
         <section className={ cardName && `scale ${this.cardColor(cardRare)}` }>
-          <h2 data-testid="name-card">{cardName}</h2>
+          <h2 data-testid="name-card" className="name-card">{cardName}</h2>
           <img
             className="img"
             src={ cardImage }
@@ -62,7 +71,8 @@ class Card extends React.Component {
           </p>
           {(cardAttr1 || cardAttr1 > 0)
           && this.atrrSection(cardAttr1, cardAttr2, cardAttr3)}
-          {cardRare !== 'normal' && <h3 data-testid="rare-card">{cardRare}</h3>}
+          {cardRare !== 'normal' && (
+            <h5 data-testid="rare-card" className="card-rare">{cardRare}</h5>)}
           <div>{this.handleTrunfo(cardTrunfo)}</div>
         </section>
         {cardStatus === 'saved' && (

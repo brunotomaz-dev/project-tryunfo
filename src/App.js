@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import cardsData from './database/cardsData';
 
 class App extends React.Component {
   constructor() {
@@ -20,6 +21,25 @@ class App extends React.Component {
       cards: [],
       hasTrunfo: false,
     };
+  }
+
+  // carregar database ao iniciar a aplicação
+  componentDidMount() {
+    this.getLocalStorage();
+  }
+
+  saveToLocalStorage = () => {
+    const { cards } = this.state;
+    localStorage.setItem('cards', JSON.stringify(cards));
+  }
+
+  getLocalStorage = () => {
+    const cards = JSON.parse(localStorage.getItem('cards'));
+    if (cards.length > 0) {
+      this.setState({ cards }, () => this.handleTrunfo());
+    } else {
+      this.setState({ cards: cardsData }, () => this.handleTrunfo());
+    }
   }
 
   handleInputChange = ({ target }) => {
@@ -80,7 +100,8 @@ class App extends React.Component {
     });
   }
 
-  handleTrunfo = () => { // trabalhar nessa lógica
+  handleTrunfo = () => {
+    this.saveToLocalStorage();
     const { cards } = this.state;
     const changeState = (state) => this.setState({ hasTrunfo: state });
     const arrayCardTrunfo = cards.map((object) => {
@@ -98,6 +119,7 @@ class App extends React.Component {
 
   savedCards = () => {
     const { cards } = this.state;
+    console.log(cards);
     return cards.map((object) => {
       const {
         cardName,
@@ -159,18 +181,23 @@ class App extends React.Component {
               onSaveButtonClick={ this.handleButtonSaveClick }
             />
           </div>
-          <Card
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-            cardStatus="preview"
-          />
+          <div>
+            { cardName && <h4 className="center">Prévia da carta</h4>}
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              cardStatus="preview"
+            />
+          </div>
+          <button type="button">Jogar</button>
         </div>
+        <h2 className="center">Cartas salvas</h2>
         <div className="container_cards">
           {this.savedCards()}
         </div>
