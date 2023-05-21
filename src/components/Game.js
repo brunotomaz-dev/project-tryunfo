@@ -12,6 +12,7 @@ class Game extends React.Component {
       playCard: {},
       playStatus: true,
       isNextDisabled: false,
+      renderChoice: false,
     };
   }
 
@@ -37,12 +38,12 @@ class Game extends React.Component {
     const { gameCardPosition, isNextDisabled } = this.state;
     const newCardPosition = gameCardPosition + 1;
     this.cardPosition(newCardPosition);
-    const isDisabled = (bool) => this.setState({ isNextDisabled: bool });
-    return isNextDisabled ? isDisabled(false) : isDisabled(true);
+    if (!isNextDisabled) this.setState({ isNextDisabled: true });
+    this.setState({ renderChoice: true });
   }
 
   render() {
-    const { playCard, playStatus, isNextDisabled } = this.state;
+    const { playCard, playStatus, isNextDisabled, renderChoice } = this.state;
     return (
       <>
         {playStatus && (
@@ -72,6 +73,48 @@ class Game extends React.Component {
               Próxima Carta
             </button>
           )}
+          <span>
+            { renderChoice && (
+              <>
+                <button
+                  type="button"
+                >
+                  Escolher Atributo
+                </button>
+                <div>
+                  <label htmlFor="attr1">
+                    <input
+                      type="radio"
+                      name="attr"
+                      id="attr1"
+                      value="attr1"
+                    />
+                    Presença
+                  </label>
+                  <label htmlFor="attr2">
+                    <input
+                      type="radio"
+                      name="attr"
+                      id="attr2"
+                      value="attr2"
+                    />
+                    Aprendizado
+                  </label>
+                  <label htmlFor="attr3">
+                    <input
+                      type="radio"
+                      name="attr"
+                      id="attr3"
+                      value="attr3"
+                    />
+                    Popularidade
+                  </label>
+                </div>
+              </>
+
+            ) }
+
+          </span>
         </div>
       </>
     );
