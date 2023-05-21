@@ -120,7 +120,6 @@ class App extends React.Component {
 
   savedCards = () => {
     const { cards } = this.state;
-    console.log(cards);
     return cards.map((object) => {
       const {
         cardName,
