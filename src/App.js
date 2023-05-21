@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import Game from './components/Game';
 import cardsData from './database/cardsData';
 
 class App extends React.Component {
@@ -159,6 +160,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      cards,
     } = this.state;
 
     return (
@@ -195,7 +197,7 @@ class App extends React.Component {
               cardStatus="preview"
             />
           </div>
-          <button type="button">Jogar</button>
+          <Game cards={ cards } />
         </div>
         <h2 className="center">Cartas salvas</h2>
         <div className="container_cards">
