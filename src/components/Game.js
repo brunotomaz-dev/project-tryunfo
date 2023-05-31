@@ -37,6 +37,8 @@ class Game extends React.Component {
   }
 
   handlePlay = () => {
+    const { displaySaved } = this.props;
+    displaySaved(false);
     this.shuffleCards();
     this.setState({ playStatus: false, renderChoice: true });
   }
@@ -142,7 +144,7 @@ class Game extends React.Component {
               >
                 Escolher Atributo
               </button>
-              <div>
+              <div className="choices">
                 <label htmlFor="attr1">
                   <input
                     type="radio"
@@ -185,6 +187,7 @@ class Game extends React.Component {
 
 Game.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  displaySaved: PropTypes.func.isRequired,
 };
 
 export default Game;

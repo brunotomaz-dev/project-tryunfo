@@ -21,6 +21,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       cards: [],
       hasTrunfo: false,
+      displaySavedCards: true,
     };
   }
 
@@ -147,6 +148,10 @@ class App extends React.Component {
     });
   }
 
+  changeIfSavedCardsAreDisplayed = (bool) => {
+    this.setState({ displaySavedCards: bool });
+  }
+
   render() {
     const {
       cardName,
@@ -160,48 +165,55 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       cards,
+      displaySavedCards,
     } = this.state;
 
     return (
       <div>
         <h1 className="center">Tryunfo</h1>
         <div className="container">
-          <div className="form_container">
-            <Form
-              onInputChange={ this.handleInputChange }
-              cardName={ cardName }
-              cardDescription={ cardDescription }
-              cardAttr1={ cardAttr1 }
-              cardAttr2={ cardAttr2 }
-              cardAttr3={ cardAttr3 }
-              cardImage={ cardImage }
-              cardRare={ cardRare }
-              cardTrunfo={ cardTrunfo }
-              hasTrunfo={ hasTrunfo }
-              isSaveButtonDisabled={ isSaveButtonDisabled }
-              onSaveButtonClick={ this.handleButtonSaveClick }
-            />
-          </div>
-          <div>
-            { cardName && <h4 className="center">Prévia da carta</h4>}
-            <Card
-              cardName={ cardName }
-              cardDescription={ cardDescription }
-              cardAttr1={ cardAttr1 }
-              cardAttr2={ cardAttr2 }
-              cardAttr3={ cardAttr3 }
-              cardImage={ cardImage }
-              cardRare={ cardRare }
-              cardTrunfo={ cardTrunfo }
-              cardStatus="preview"
-            />
-          </div>
-          <Game cards={ cards } />
+          { displaySavedCards && (
+            <>
+              <div className="form_container">
+                <Form
+                  onInputChange={ this.handleInputChange }
+                  cardName={ cardName }
+                  cardDescription={ cardDescription }
+                  cardAttr1={ cardAttr1 }
+                  cardAttr2={ cardAttr2 }
+                  cardAttr3={ cardAttr3 }
+                  cardImage={ cardImage }
+                  cardRare={ cardRare }
+                  cardTrunfo={ cardTrunfo }
+                  hasTrunfo={ hasTrunfo }
+                  isSaveButtonDisabled={ isSaveButtonDisabled }
+                  onSaveButtonClick={ this.handleButtonSaveClick }
+                />
+              </div>
+              <div>
+                { cardName && <h4 className="center">Prévia da carta</h4>}
+                <Card
+                  cardName={ cardName }
+                  cardDescription={ cardDescription }
+                  cardAttr1={ cardAttr1 }
+                  cardAttr2={ cardAttr2 }
+                  cardAttr3={ cardAttr3 }
+                  cardImage={ cardImage }
+                  cardRare={ cardRare }
+                  cardTrunfo={ cardTrunfo }
+                  cardStatus="preview"
+                />
+              </div>
+            </>)}
+          <Game cards={ cards } displaySaved={ this.changeIfSavedCardsAreDisplayed } />
         </div>
-        <h2 className="center">Cartas salvas</h2>
-        <div className="container_cards">
-          {this.savedCards()}
-        </div>
+        { displaySavedCards && (
+          <>
+            <h2 className="center">Cartas salvas</h2>
+            <div className="container_cards">
+              {this.savedCards()}
+            </div>
+          </>)}
       </div>
     );
   }

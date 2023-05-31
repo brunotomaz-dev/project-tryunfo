@@ -309,3 +309,14 @@ img {
 .card-rare {
   margin-bottom: 10px;
 }
+
+.choices {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 15px;
+  max-width: var(--max-width);
+}
