@@ -1,4 +1,10 @@
 /* eslint-disable max-len */
+const rarity = {
+  normal: 'normal',
+  rare: 'raro',
+  epic: 'muito raro',
+};
+
 const cardsData = [
   {
     cardName: 'Bash',
@@ -7,7 +13,7 @@ const cardsData = [
     cardAttr2: '84',
     cardAttr3: '39',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg',
-    cardRare: 'raro',
+    cardRare: rarity.epic,
     cardTrunfo: false,
   },
   {
@@ -17,7 +23,7 @@ const cardsData = [
     cardAttr2: '76',
     cardAttr3: '74',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -27,7 +33,7 @@ const cardsData = [
     cardAttr2: '49',
     cardAttr3: '82',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -37,7 +43,7 @@ const cardsData = [
     cardAttr2: '87',
     cardAttr3: '45',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -47,7 +53,7 @@ const cardsData = [
     cardAttr2: '55',
     cardAttr3: '80',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -57,7 +63,7 @@ const cardsData = [
     cardAttr2: '43',
     cardAttr3: '90',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg',
-    cardRare: 'muito raro',
+    cardRare: rarity.epic,
     cardTrunfo: true,
   },
   {
@@ -67,7 +73,7 @@ const cardsData = [
     cardAttr2: '80',
     cardAttr3: '83',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
-    cardRare: 'raro',
+    cardRare: rarity.rare,
     cardTrunfo: false,
   },
   {
@@ -77,7 +83,7 @@ const cardsData = [
     cardAttr2: '62',
     cardAttr3: '81',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -87,7 +93,7 @@ const cardsData = [
     cardAttr2: '37',
     cardAttr3: '85',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-    cardRare: 'raro',
+    cardRare: rarity.rare,
     cardTrunfo: false,
   },
   {
@@ -97,7 +103,7 @@ const cardsData = [
     cardAttr2: '75',
     cardAttr3: '50',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -107,7 +113,7 @@ const cardsData = [
     cardAttr2: '79',
     cardAttr3: '74',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -117,7 +123,7 @@ const cardsData = [
     cardAttr2: '74',
     cardAttr3: '53',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -127,7 +133,7 @@ const cardsData = [
     cardAttr2: '88',
     cardAttr3: '87',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-    cardRare: 'raro',
+    cardRare: rarity.rare,
     cardTrunfo: false,
   },
   {
@@ -137,7 +143,7 @@ const cardsData = [
     cardAttr2: '53',
     cardAttr3: '79',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -147,7 +153,7 @@ const cardsData = [
     cardAttr2: '87',
     cardAttr3: '77',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg',
-    cardRare: 'muito raro',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -157,7 +163,7 @@ const cardsData = [
     cardAttr2: '77',
     cardAttr3: '66',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -167,7 +173,7 @@ const cardsData = [
     cardAttr2: '83',
     cardAttr3: '43',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mocha/mocha-plain.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -177,7 +183,7 @@ const cardsData = [
     cardAttr2: '84',
     cardAttr3: '49',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -187,7 +193,7 @@ const cardsData = [
     cardAttr2: '85',
     cardAttr3: '56',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-    cardRare: 'normal',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
   {
@@ -197,7 +203,7 @@ const cardsData = [
     cardAttr2: '55',
     cardAttr3: '80',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-    cardRare: 'raro',
+    cardRare: rarity.normal,
     cardTrunfo: false,
   },
 ];

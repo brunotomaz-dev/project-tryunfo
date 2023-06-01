@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Card from './Card';
+import GameChoices from './GameChoices';
 import Score from './Score';
 
 class Game extends React.Component {
@@ -19,6 +20,7 @@ class Game extends React.Component {
       isButtonAtributeDisabled: true,
       cpuCard: {},
       gamePoints: { player: 0, cpu: 0, status: '' },
+      endGame: false,
     };
   }
 
@@ -49,11 +51,21 @@ class Game extends React.Component {
   }
 
   handleNext = () => {
-    const { gameCardPosition, isNextDisabled } = this.state;
-    const newCardPosition = gameCardPosition + 1;
-    this.cardPosition(newCardPosition, 'player');
-    if (!isNextDisabled) this.setState({ isNextDisabled: true });
-    this.setRenderState(true);
+    const { gameCardPosition, isNextDisabled, gameCards } = this.state;
+    if (gameCardPosition + 2 < gameCards.length - 1) {
+      const newCardPosition = gameCardPosition + 1;
+      this.cardPosition(newCardPosition, 'player');
+      if (!isNextDisabled) this.setState({ isNextDisabled: true });
+      this.setRenderState(true);
+    } else {
+      this.setEndGame();
+      this.setState({
+        isNextDisabled: true,
+        renderChoice: false,
+        renderCpuCardAndResult: false,
+        playCard: {},
+      });
+    }
   }
 
   handleChoice = ({ target }) => {
@@ -65,6 +77,7 @@ class Game extends React.Component {
     const { gameCardPosition } = this.state;
     const newCardPosition = gameCardPosition + 1;
     this.cardPosition(newCardPosition, 'cpu');
+    this.setState({ isButtonAtributeDisabled: true });
   }
 
   setRenderState = (bool) => {
@@ -80,13 +93,13 @@ class Game extends React.Component {
     const cpuAttr = cpuCard[attrValue];
     let attrName = '';
     if (attr === 'cardAttr1') {
-      attrName = 'PRESENÇA';
+      attrName = 'Presença';
     } else if (attr === 'cardAttr2') {
-      attrName = 'APRENDIZADO';
+      attrName = 'Aprendizado';
     } else {
-      attrName = 'POPULARIDADE';
+      attrName = 'Popularidade';
     }
-    const atributePhrase = `Atributo ${attrName}: ${playerAttr} vs ${cpuAttr}`;
+    const atributePhrase = `${attrName}: ${playerAttr} vs ${cpuAttr}`;
     if (playerAttr > cpuAttr) {
       this.setState(
         { gamePoints: {
@@ -119,11 +132,18 @@ class Game extends React.Component {
     }
   }
 
-  // criar lógica para quando o jogo acabar, mostrar o resultado final
-  // criar lógica para quando o jogo acabar, mostrar o botão de jogar novamente
-  // criar lógica para travar botão de jogar caso não ha carta suficiente
-  // criar logica para encerrar o jogo quando não houver mais cartas
-  // criar botão para encerrar o jogo - pode ficar no score
+  setEndGame = () => {
+    const { endGame } = this.state;
+    return endGame ? this.setState({ endGame: false }) : this.setState({ endGame: true });
+  }
+
+  enablePlayButton = () => {
+    this.setState({
+      renderPlayButton: true,
+      endGame: false,
+      gamePoints: { player: 0, cpu: 0, status: '' },
+    });
+  }
 
   render() {
     const {
@@ -135,13 +155,15 @@ class Game extends React.Component {
       renderCpuCardAndResult,
       isButtonAtributeDisabled,
       gamePoints,
+      endGame,
     } = this.state;
+    const { displaySaved } = this.props;
 
     return (
       <>
         {renderPlayButton && (
           <button type="button" onClick={ () => this.handlePlay() }>Jogar</button>)}
-        <div>
+        <div className="center_alt">
           <div className="container full-width">
             {playCard && (
               <div className="container_cards">
@@ -160,8 +182,16 @@ class Game extends React.Component {
                     cardStatus="play"
                   />
                 </div>
-                <Score gamePoints={ gamePoints } />
               </>
+            )}
+            {(renderCpuCardAndResult || endGame) && (
+              <Score
+                gamePoints={ gamePoints }
+                endGame={ endGame }
+                setEndGame={ this.setEndGame }
+                inicialPage={ displaySaved }
+                enablePlayButton={ this.enablePlayButton }
+              />
             )}
           </div>
           {playCard.cardName && (
@@ -174,48 +204,11 @@ class Game extends React.Component {
             </button>
           )}
           { renderChoice && (
-            <>
-              <button
-                type="button"
-                disabled={ isButtonAtributeDisabled }
-                onClick={ () => this.handleButtonChoice() }
-              >
-                Escolher Atributo
-              </button>
-              <div className="choices">
-                <label htmlFor="attr1">
-                  <input
-                    type="radio"
-                    name="attr"
-                    id="attr1"
-                    value="cardAttr1"
-                    onChange={ this.handleChoice }
-                  />
-                  Presença
-                </label>
-                <label htmlFor="attr2">
-                  <input
-                    type="radio"
-                    name="attr"
-                    id="attr2"
-                    value="cardAttr2"
-                    onChange={ this.handleChoice }
-                  />
-                  Aprendizado
-                </label>
-                <label htmlFor="attr3">
-                  <input
-                    type="radio"
-                    name="attr"
-                    id="attr3"
-                    value="cardAttr3"
-                    onChange={ this.handleChoice }
-                  />
-                  Popularidade
-                </label>
-              </div>
-            </>
-
+            <GameChoices
+              isButtonAtributeDisabled={ isButtonAtributeDisabled }
+              handleButtonChoice={ this.handleButtonChoice }
+              handleChoice={ this.handleChoice }
+            />
           ) }
         </div>
       </>

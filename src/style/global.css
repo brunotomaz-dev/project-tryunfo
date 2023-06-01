@@ -338,13 +338,16 @@ img {
 
 .parcial_result {
   align-items: center;
+  background-color: var(--grey-200);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
   display: flex;
   flex-direction: column;
   font-family: cursive;
   gap: 10px;
   margin: 0 auto;
-  margin-top: 15px;
-  max-width: var(--max-width);
+  padding: 7px;
+  width: 400px;
 }
 
 .parcial_result h3 {
@@ -354,4 +357,21 @@ img {
 .parcial_result h5 {
   margin-bottom: 0;
   margin-top: 5px;
+}
+
+.final_result {
+  align-items: center;
+  background-color: var(--grey-200);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
+  display: flex;
+  flex-direction: column;
+  font-family: cursive;
+  gap: 10px;
+  padding: 7px;
+  width: 400px;
+}
+
+.border_test {
+  border: 1px solid red;
 }
