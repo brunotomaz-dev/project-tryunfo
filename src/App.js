@@ -124,28 +124,19 @@ class App extends React.Component {
     return cards.map((object) => {
       const {
         cardName,
-        cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardImage,
-        cardRare,
-        cardTrunfo,
       } = object;
       return (<Card
         key={ cardName }
-        cardName={ cardName }
-        cardDescription={ cardDescription }
-        cardAttr1={ cardAttr1 }
-        cardAttr2={ cardAttr2 }
-        cardAttr3={ cardAttr3 }
-        cardImage={ cardImage }
-        cardRare={ cardRare }
-        cardTrunfo={ cardTrunfo }
+        objCard={ object }
         cardStatus="saved"
         handleExclusion={ this.handleSavedCardsExclude }
       />);
     });
+  }
+
+  handleExclusionOfAllCards = () => {
+    this.setState({ cards: [] }, () => this.handleTrunfo());
+    localStorage.clear();
   }
 
   changeIfSavedCardsAreDisplayed = (bool) => {
@@ -170,7 +161,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1 className="center">Tryunfo</h1>
+        <h3 className="center margin_bottom_reset">Tryunfo</h3>
         <div className="container">
           { displaySavedCards && (
             <>
@@ -193,14 +184,16 @@ class App extends React.Component {
               <div>
                 { cardName && <h4 className="center">Prévia da carta</h4>}
                 <Card
-                  cardName={ cardName }
-                  cardDescription={ cardDescription }
-                  cardAttr1={ cardAttr1 }
-                  cardAttr2={ cardAttr2 }
-                  cardAttr3={ cardAttr3 }
-                  cardImage={ cardImage }
-                  cardRare={ cardRare }
-                  cardTrunfo={ cardTrunfo }
+                  objCard={ {
+                    cardName,
+                    cardDescription,
+                    cardAttr1,
+                    cardAttr2,
+                    cardAttr3,
+                    cardImage,
+                    cardRare,
+                    cardTrunfo,
+                  } }
                   cardStatus="preview"
                 />
               </div>
@@ -209,7 +202,16 @@ class App extends React.Component {
         </div>
         { displaySavedCards && (
           <>
-            <h2 className="center">Cartas salvas</h2>
+            <h3 className="center name-card">Cartas salvas</h3>
+            <span className="center">
+              <button
+                type="button"
+                className="rareBtn"
+                onClick={ this.handleExclusionOfAllCards }
+              >
+                Apagar todas as Cartas
+              </button>
+            </span>
             <div className="container_cards">
               {this.savedCards()}
             </div>

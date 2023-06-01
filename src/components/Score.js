@@ -4,7 +4,6 @@ import React from 'react';
 class Score extends React.Component {
   render() {
     const { gamePoints } = this.props;
-    console.log(gamePoints);
     return (
       <div className="parcial_result">
         <h3>{gamePoints.status}</h3>

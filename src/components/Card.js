@@ -39,20 +39,19 @@ class Card extends React.Component {
   }
 
   render() {
-    const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-      cardStatus,
-      handleExclusion,
+    const { objCard:
+      { cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo },
+    cardStatus,
+    handleExclusion,
     } = this.props;
 
-    // if (cardName === '') return null;
     return (
       <div className="container-column">
         <section className={ cardName && `scale ${this.cardColor(cardRare)}` }>

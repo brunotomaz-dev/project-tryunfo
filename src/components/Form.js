@@ -29,7 +29,7 @@ class Form extends React.Component {
 
     return (
       <form>
-        <h3>Adicionar carta</h3>
+        <h4 className="center">Adicionar carta</h4>
         <label htmlFor="cardName">
           Nome
           <input
@@ -121,7 +121,13 @@ class Form extends React.Component {
             Super:
             {' '}
             { hasTrunfo
-              ? <p>&quot;Você já tem um Super Trunfo em seu baralho&quot;</p>
+              ? (
+                <p
+                  className="text_small"
+                >
+                  &quot;Você já tem um Super Trunfo em seu baralho&quot;
+                </p>
+              )
               : inputSuper }
           </label>
         </div>

@@ -53,9 +53,6 @@ class Game extends React.Component {
     const newCardPosition = gameCardPosition + 1;
     this.cardPosition(newCardPosition, 'player');
     if (!isNextDisabled) this.setState({ isNextDisabled: true });
-    /* this.setState({
-      renderChoice: true, renderCpuCardAndResult: false, isButtonAtributeDisabled: true,
-    }); */
     this.setRenderState(true);
   }
 
@@ -83,13 +80,13 @@ class Game extends React.Component {
     const cpuAttr = cpuCard[attrValue];
     let attrName = '';
     if (attr === 'cardAttr1') {
-      attrName = 'Presença';
+      attrName = 'PRESENÇA';
     } else if (attr === 'cardAttr2') {
-      attrName = 'Aprendizado';
+      attrName = 'APRENDIZADO';
     } else {
-      attrName = 'Popularidade';
+      attrName = 'POPULARIDADE';
     }
-    const atributePhrase = `Atributo ${attrName} escolhido: ${playerAttr} vs ${cpuAttr}`;
+    const atributePhrase = `Atributo ${attrName}: ${playerAttr} vs ${cpuAttr}`;
     if (playerAttr > cpuAttr) {
       this.setState(
         { gamePoints: {
@@ -124,6 +121,9 @@ class Game extends React.Component {
 
   // criar lógica para quando o jogo acabar, mostrar o resultado final
   // criar lógica para quando o jogo acabar, mostrar o botão de jogar novamente
+  // criar lógica para travar botão de jogar caso não ha carta suficiente
+  // criar logica para encerrar o jogo quando não houver mais cartas
+  // criar botão para encerrar o jogo - pode ficar no score
 
   render() {
     const {
@@ -146,14 +146,7 @@ class Game extends React.Component {
             {playCard && (
               <div className="container_cards">
                 <Card
-                  cardName={ playCard.cardName }
-                  cardDescription={ playCard.cardDescription }
-                  cardAttr1={ playCard.cardAttr1 }
-                  cardAttr2={ playCard.cardAttr2 }
-                  cardAttr3={ playCard.cardAttr3 }
-                  cardImage={ playCard.cardImage }
-                  cardRare={ playCard.cardRare }
-                  cardTrunfo={ playCard.cardTrunfo }
+                  objCard={ playCard }
                   cardStatus="play"
                 />
               </div>
@@ -163,14 +156,7 @@ class Game extends React.Component {
                 <h2>VS</h2>
                 <div className="container_cards">
                   <Card
-                    cardName={ cpuCard.cardName }
-                    cardDescription={ cpuCard.cardDescription }
-                    cardAttr1={ cpuCard.cardAttr1 }
-                    cardAttr2={ cpuCard.cardAttr2 }
-                    cardAttr3={ cpuCard.cardAttr3 }
-                    cardImage={ cpuCard.cardImage }
-                    cardRare={ cpuCard.cardRare }
-                    cardTrunfo={ cpuCard.cardTrunfo }
+                    objCard={ cpuCard }
                     cardStatus="play"
                   />
                 </div>

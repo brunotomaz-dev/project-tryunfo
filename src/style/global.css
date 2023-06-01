@@ -107,6 +107,7 @@ h4 {
 
 h5 {
   font-size: 1.25rem;
+  text-transform: capitalize;
 }
 
 small, .text_small {
@@ -147,6 +148,11 @@ button {
   text-transform: capitalize;
 
   /* transition: var(--transition); */
+}
+
+.rareBtn {
+  background: var(--rare);
+  color: var(--white);
 }
 
 button:hover {
@@ -250,6 +256,15 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.center_alt {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.margin_bottom_reset {
+  margin-bottom: 0;
 }
 
 .description-card {

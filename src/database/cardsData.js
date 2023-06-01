@@ -87,7 +87,7 @@ const cardsData = [
     cardAttr2: '37',
     cardAttr3: '85',
     cardImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-    cardRare: 'rare',
+    cardRare: 'raro',
     cardTrunfo: false,
   },
   {
